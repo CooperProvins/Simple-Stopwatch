@@ -1,0 +1,33 @@
+:root {
+    --color-bg-base: #ffffff;
+    --color-bg-in: #d3d3d3;
+    --color-bg-in2: #6c6c6c;
+
+    --color-outline: black;
+
+    --color-text: black;
+}
+html, body{
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: Helvetica, sans-serif;
+    color: var(--color-text);
+}
+main {
+    flex: 1;
+    background-color: var(--color-bg-base);
+}
+footer {
+    background-color: var(--color-bg-in);
+    font-weight: normal;
+    height: 50px;
+    text-align: center;
+}
+a {
+    color: var(--color-text);
+}
