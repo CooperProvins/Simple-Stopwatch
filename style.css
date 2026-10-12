@@ -16,7 +16,7 @@
     --color-inactive: grey;
 
 }
-html, body{
+html, body {
     min-height: 100vh;
     margin: 0;
     padding: 0;
@@ -24,6 +24,8 @@ html, body{
 
 #time {
     background-color: var(--color-time);
+    font-size: min(20rem, 15cqw);
+    margin: 3rem;
 }
 #countdown {
     background-color: var(--color-countdown);
@@ -38,24 +40,48 @@ html, body{
     background-color: var(--color-reset);
 }
 
+#setupButtons {
+    margin: 3rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    /*align-content: center;*/
+    gap: 1rem;
+}
+#setupButtons .largeContainer {
+
+}
+#doubleButton {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: fit-content;
+}
 .largeElement {
-    border-radius: 1rem;
-    border: 3px solid var(--color-outline);
-    font-size: 100px;
+    border: 0;
+    font-size: 5rem;
     text-align: center;
+    overflow-wrap: break-word;
 }
 .largeContainer {
-
+    border-radius: 1rem;
+    border: 3px solid var(--color-outline);
+    overflow: hidden;
+}
+.squareButton {
+    aspect-ratio: 1 / 1;
+    width: 20rem;
 }
 body {
     display: flex;
     flex-direction: column;
     font-family: Helvetica, sans-serif;
     color: var(--color-text);
+    background-color: var(--color-bg-base);
 }
 main {
     flex: 1;
-    background-color: var(--color-bg-base);
 }
 footer {
     background-color: var(--color-bg-in);
