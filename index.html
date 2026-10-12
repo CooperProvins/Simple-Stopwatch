@@ -4,13 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Webpage Title</title>
+    <title>Simple Stopwatch</title>
     <link rel="stylesheet" href="style.css">
     <script src="index.js" defer></script>
 </head>
 <body>
 <main>
-
+<div class="largeContainer largeElement" id="time">TIME</div>
+<div class="largeContainer">
+    <button class="largeElement" id="countdown" onclick="setCountdown()">COUNTDOWN</button>
+    <button class="largeElement" id="start" onclick="setRunning()">START</button>
+</div>
+<button class="largeContainer largeElement" id="pause" onclick="setPaused()">PAUSE</button>
+<button class="largeContainer largeElement" id="reset" onclick="setReset()">RESET</button>
 </main>
     <footer>
         <p>&copy Cooper Provins '26 &emsp; <a href="https://github.com/CooperProvins">GitHub Repository</a></p>

@@ -1,16 +1,51 @@
 :root {
-    --color-bg-base: #ffffff;
-    --color-bg-in: #d3d3d3;
-    --color-bg-in2: #6c6c6c;
+    --color-bg-base: #292929;
+    --color-bg-in: #606060;
+    --color-bg-in2: #a8a8a8;
 
     --color-outline: black;
 
     --color-text: black;
+
+    --color-time: var(--color-bg-in);
+    --color-countdown: green;
+    --color-start: lime;
+    --color-pause: blue;
+    --color-reset: red;
+
+    --color-inactive: grey;
+
 }
 html, body{
     min-height: 100vh;
     margin: 0;
     padding: 0;
+}
+
+#time {
+    background-color: var(--color-time);
+}
+#countdown {
+    background-color: var(--color-countdown);
+}
+#start {
+    background-color: var(--color-start);
+}
+#pause {
+    background-color: var(--color-pause);
+}
+#reset {
+    background-color: var(--color-reset);
+}
+
+.largeElement {
+    border-radius: 1rem;
+    border: 3px solid var(--color-outline);
+    font-size: 100px;
+    text-align: center;
+}
+.largeContainer {
+
 }
 body {
     display: flex;
