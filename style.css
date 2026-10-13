@@ -65,8 +65,8 @@ html, body {
     overflow-wrap: break-word;
 }
 .largeContainer {
-    border-radius: 1rem;
-    border: 3px solid var(--color-outline);
+    border-radius: 3rem;
+    border: 0.5rem solid var(--color-outline);
     overflow: hidden;
 }
 .squareButton {
