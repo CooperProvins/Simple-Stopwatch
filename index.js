@@ -1,6 +1,11 @@
 var state;
-var duration = 0;
-var stopwatchLoop;
+var pauseTime;
+
+var startTime;
+var updateTimeStopwatchInterval;
+
+var countdownTime;
+var updateTimeCountdownInterval
 
 const inactive = window.getComputedStyle(document.documentElement).getPropertyValue('--color-inactive').trim();
 
@@ -12,22 +17,37 @@ const reset = document.getElementById("reset");
 
 setReset();
 
-function updateStopwatch(increment) {
-    const minutes = Math.floor(duration / 60000);
-    const seconds = Math.floor((duration-minutes*60000)/1000);
-    const deciSeconds = Math.floor((duration-minutes*60000-seconds*1000)/100);
+time.textContent = msToString(0);
+
+function updateTimeStopwatchFunction() {
+    time.textContent = msToString(Date.now() - startTime);
+}
+
+function updateTimeCountdownFunction() {
+    const remaining = countdownTime - Date.now();
+    if (remaining > 0) {
+        time.textContent = Math.ceil(remaining/1000);
+    }
+    else {
+        clearInterval(updateTimeCountdownInterval);
+        setRunning();
+    }
+}
+
+function msToString(ms){
+    const minutes = Math.floor(ms / 60000);
+    const seconds = Math.floor((ms-minutes*60000)/1000);
+    const deciSeconds = Math.floor((ms-minutes*60000-seconds*1000)/100);
 
     // Pad with leading zeros so it prints 02:05 instead of 2:5
-    time.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}:${String(deciSeconds)}`;
-
-    duration += increment;
+    return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}:${String(deciSeconds)}`;
 }
 
 function setReset() {
     state = "reset";
-    clearInterval(stopwatchLoop)
-    duration = 0;
-    updateStopwatch(0);
+
+    clearInterval(updateTimeStopwatchInterval);
+    clearInterval(updateTimeCountdownInterval)
 
     countdown.style.backgroundColor = '';
     countdown.disabled = false;
@@ -41,20 +61,36 @@ function setReset() {
 }
 function setCountdown() {
     state = "countdown";
+    let result = prompt("How many seconds to countdown for","5");
+    if (result != null || parseFloat(result) <= 0 || parseFloat(result) > 20) {
+        countdownTime = Date.now()+parseFloat(result)*1000;
 
-    reset.style.backgroundColor = '';
-    reset.disabled = false;
+        updateTimeCountdownInterval = setInterval(updateTimeCountdownFunction, 10);
 
-    pause.style.backgroundColor = inactive;
-    pause.disabled = true;
-    countdown.style.backgroundColor = inactive;
-    countdown.disabled = true;
-    start.style.backgroundColor = inactive;
-    start.disabled = true;
+        reset.style.backgroundColor = '';
+        reset.disabled = false;
+
+        pause.style.backgroundColor = inactive;
+        pause.disabled = true;
+        countdown.style.backgroundColor = inactive;
+        countdown.disabled = true;
+        start.style.backgroundColor = inactive;
+        start.disabled = true;
+    }
+    else {
+        setReset();
+    }
 }
 function setRunning() {
+    if (state === "paused") {
+        startTime = startTime + (Date.now() - pauseTime);
+    }
+    else {
+        startTime = Date.now();
+    }
     state = "running";
-    stopwatchLoop = setInterval(updateStopwatch, 10,10);
+
+    updateTimeStopwatchInterval = setInterval(updateTimeStopwatchFunction, 10);
 
     pause.style.backgroundColor = '';
     pause.disabled = false;
@@ -68,7 +104,9 @@ function setRunning() {
 }
 function setPaused() {
     state = "paused";
-    clearInterval(stopwatchLoop);
+
+    pauseTime = Date.now();
+    clearInterval(updateTimeStopwatchInterval);
 
     start.style.backgroundColor = '';
     start.disabled = false;
