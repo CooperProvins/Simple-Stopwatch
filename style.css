@@ -70,8 +70,8 @@ html, body {
     overflow: hidden;
 }
 .squareButton {
-    /* aspect-ratio: 1 / 1; */
-    width: 10rem;
+    aspect-ratio: 1 / 1;
+    width: 20rem;
 }
 body {
     display: flex;
