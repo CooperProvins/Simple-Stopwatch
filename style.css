@@ -24,7 +24,7 @@ html, body {
 
 #time {
     background-color: var(--color-time);
-    font-size: min(20rem, 15cqw);
+    font-size: min(23cqw, 35vh);
     margin: 3rem;
 }
 #countdown {
