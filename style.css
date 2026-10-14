@@ -24,7 +24,7 @@ html, body {
 
 #time {
     background-color: var(--color-time);
-    font-size: min(23cqw, 35vh);
+    font-size: 50vh;
     margin: 3rem;
 }
 #countdown {
@@ -71,7 +71,7 @@ html, body {
 }
 .squareButton {
     aspect-ratio: 1 / 1;
-    width: 20rem;
+    width: 10rem;
 }
 body {
     display: flex;
