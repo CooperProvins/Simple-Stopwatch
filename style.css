@@ -1,19 +1,18 @@
 :root {
-    --color-bg-base: #292929;
-    --color-bg-in: #606060;
-    --color-bg-in2: #a8a8a8;
+    --color-bg-base: #ececec;
+    --color-bg-in: #d3d3d3;
+    --color-bg-in2: #d3d3d3;
 
     --color-outline: black;
 
     --color-text: black;
 
-    --color-time: var(--color-bg-in);
     --color-countdown: green;
     --color-start: lime;
     --color-pause: blue;
     --color-reset: red;
 
-    --color-inactive: grey;
+    --color-inactive: var(--color-bg-in);
 
 }
 html, body {
@@ -23,8 +22,8 @@ html, body {
 }
 
 #time {
-    background-color: var(--color-time);
-    font-size: 50vh;
+    background-color: var(--color-bg-in);
+    font-size: 28vw;
     margin: 3rem;
 }
 #countdown {
@@ -72,6 +71,9 @@ html, body {
 .squareButton {
     aspect-ratio: 1 / 1;
     width: 20rem;
+}
+.squareButton:disabled {
+    background-color: black;
 }
 body {
     display: flex;
